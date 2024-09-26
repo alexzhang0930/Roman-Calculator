@@ -25,8 +25,10 @@ public class LinkedListStack<Item> {
         size--;
         return temp;
     }
-
+    public boolean isEmpty() {
+        return size == 0;
+    }
     public Item peak() {
-        return (Item) head.item;
+        return head.item;
     }
 }

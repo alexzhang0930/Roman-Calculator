@@ -1,21 +1,92 @@
 public class RomanCalculator {
     public static void main(String[] args) throws Exception {
-        
+        System.out.println(romCalc("( I additur I )"));
+        System.out.println("fuck");
     }
     public static String romCalc(String eq) {
         String[] arr = eq.split(" ");
         LinkedListStack<String> operators = new LinkedListStack<>();
         LinkedListStack<Integer> values = new LinkedListStack<>();
-        int num = 0;
+
         for(String str : arr) {
             if(str.equals("(")) {
                 operators.push(str);
             }
-        }
-        
+            else if(str.equals("additur") || 
+                    str.equals("demitur") || 
+                    str.equals("multiplicatur") || 
+                    str.equals("dividitur")) {
 
-        return eq;
+                    while(!operators.isEmpty() && convertOp(operators.peak()) >= convertOp(str)) {
+                        String op = operators.pop();
+
+                        if(op.equals("additur")) {
+                            values.push(values.pop() + values.pop());
+                        }
+                        else if(op.equals("demitur")) {
+                            values.push(-1 * values.pop() + values.pop());
+                        }
+                        else if(op.equals("multiplicatur")) {
+                            values.push(values.pop() * values.pop());
+                        }
+                        else if(op.equals("dividitur")) {
+                            values.push((int) ((1.0 / (double) values.pop()) * values.pop()));
+                        }
+                    }
+
+                    operators.push(str);
+                    
+            }
+            else if(str.equals(")")) {
+                while(!operators.peak().equals("(")) {
+                    String op = operators.pop();
+
+                    if(op.equals("additur")) {
+                        values.push(values.pop() + values.pop());
+                    }
+                    else if(op.equals("demitur")) {
+                         values.push(-1 * values.pop() + values.pop());
+                    }
+                    else if(op.equals("multiplicatur")) {
+                        values.push(values.pop() * values.pop());
+                    }
+                    else if(op.equals("dividitur")) {
+                        values.push((int) ((1.0 / (double) values.pop()) * values.pop()));
+                    }
+                }
+                operators.pop();
+            }
+            else {
+                values.push(romToDec(str));
+            }
+        }
+        while(!operators.isEmpty()) {
+            String op = operators.pop();
+
+            if(op.equals("additur")) {
+                values.push(values.pop() + values.pop());
+            }
+            else if(op.equals("demitur")) {
+                 values.push(-1 * values.pop() + values.pop());
+            }
+            else if(op.equals("multiplicatur")) {
+                values.push(values.pop() * values.pop());
+            }
+            else if(op.equals("dividitur")) {
+                values.push((int) ((1.0 / (double) values.pop()) * values.pop()));
+            }
+        }
+        return decToRom(values.pop());
     }
+    private static int convertOp(String op) {
+        if(op.equals("additur") || op.equals("demitur")) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+
     public static String decToRom(int num) {
         String rom = "";
 
