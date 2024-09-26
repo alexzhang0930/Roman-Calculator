@@ -9,7 +9,7 @@ public class RomanCalculator {
         int num = 0;
         for(String str : arr) {
             if(str.equals("(")) {
-                
+                operators.push(str);
             }
         }
         
