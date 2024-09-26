@@ -1,5 +1,5 @@
 public class LinkedListStack<Item> {
-    private class Node<Item> {
+    public class Node<Item> {
         Item item;
         Node<Item> next;
     }
@@ -7,7 +7,7 @@ public class LinkedListStack<Item> {
     private Node<Item> head;
     private int size;
 
-    public LinkedListStack () {
+    public LinkedListStack() {
         head = null;
         size = 0;
     }

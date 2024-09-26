@@ -1,7 +1,11 @@
 public class RomanCalculator {
     public static void main(String[] args) throws Exception {
-        System.out.println(romCalc("( I additur I )"));
-        System.out.println("fuck");
+        //System.out.println(romCalc("( V additur V )"));
+        //LinkedListStack<String> test = new LinkedListStack<>();
+        //test.push("head");
+        romCalc("( I additur I )");
+        //System.out.println("test");
+        //System.out.flush();
     }
     public static String romCalc(String eq) {
         String[] arr = eq.split(" ");
@@ -9,6 +13,7 @@ public class RomanCalculator {
         LinkedListStack<Integer> values = new LinkedListStack<>();
 
         for(String str : arr) {
+            //System.out.println(str);
             if(str.equals("(")) {
                 operators.push(str);
             }
@@ -45,7 +50,7 @@ public class RomanCalculator {
                         values.push(values.pop() + values.pop());
                     }
                     else if(op.equals("demitur")) {
-                         values.push(-1 * values.pop() + values.pop());
+                         values.push((-1 * values.pop()) + values.pop());
                     }
                     else if(op.equals("multiplicatur")) {
                         values.push(values.pop() * values.pop());
@@ -76,6 +81,8 @@ public class RomanCalculator {
                 values.push((int) ((1.0 / (double) values.pop()) * values.pop()));
             }
         }
+
+        System.out.println("test");
         return decToRom(values.pop());
     }
     private static int convertOp(String op) {
