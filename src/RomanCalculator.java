@@ -54,14 +54,6 @@ public class RomanCalculator {
         }
         return decToRom(values.pop());
     }
-    private static int convertOp(String op) {
-        if(op.equals("additur") || op.equals("demitur")) {
-            return 0;
-        }
-        else {
-            return 1;
-        }
-    }
 
     public static String decToRom(int num) {
         String rom = "";
