@@ -46,8 +46,6 @@ public class RomanCalculator {
                 }
                 values.push((int) v);
             }
-                
-
             else {
                 values.push(romToDec(str));
             }
