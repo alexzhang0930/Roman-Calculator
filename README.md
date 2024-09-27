@@ -8,9 +8,9 @@ Syntax:
    Ex: ( XII additur ( V multiplicatur II ) )
 
 Key:
-   "+" = "additur"
-   "-" = "demitur"
-   "*" = "multiplicatur"
+   "+" = "additur"\n
+   "-" = "demitur"\n
+   "*" = "multiplicatur"\n
    "/" = "dividitur"
 
 Extra Notes:
