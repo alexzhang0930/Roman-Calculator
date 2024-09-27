@@ -21,10 +21,4 @@ public class LinkedListStack<Item> {
         head = head.next;
         return temp;
     }
-    public boolean isEmpty() {
-        return size == 0;
-    }
-    public Item peak() {
-        return head.item;
-    }
 }
