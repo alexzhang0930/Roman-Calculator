@@ -1,6 +1,15 @@
+import java.util.Scanner;
+
 public class RomanCalculator {
     public static void main(String[] args) throws Exception {
-        System.out.println(romCalc("( I additur I )"));
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            System.out.print("Input Expression: ");
+            String input = scanner.nextLine();
+            if(input.equals("q")) break;
+            System.out.println(romCalc(input));
+        }
+        scanner.close();
     }
     public static String romCalc(String eq) {
         String[] arr = eq.split(" ");
@@ -8,7 +17,6 @@ public class RomanCalculator {
         LinkedListStack<Integer> values = new LinkedListStack<>();
 
         for(String str : arr) {
-            //System.out.println(str);
             if(str.equals("(")) {}
             
             else if(str.equals("additur") || 
@@ -42,22 +50,6 @@ public class RomanCalculator {
 
             else {
                 values.push(romToDec(str));
-            }
-        }
-        while(!operators.isEmpty()) {
-            String op = operators.pop();
-
-            if(op.equals("additur")) {
-                values.push(values.pop() + values.pop());
-            }
-            else if(op.equals("demitur")) {
-                 values.push(-1 * values.pop() + values.pop());
-            }
-            else if(op.equals("multiplicatur")) {
-                values.push(values.pop() * values.pop());
-            }
-            else if(op.equals("dividitur")) {
-                values.push((int) ((1.0 / (double) values.pop()) * values.pop()));
             }
         }
         return decToRom(values.pop());
