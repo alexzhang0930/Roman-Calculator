@@ -21,7 +21,7 @@ public class LinkedListStack<Item> {
 
     public Item pop() {
         Item temp = head.item;
-        head.next = head;
+        head = head.next;
         size--;
         return temp;
     }
